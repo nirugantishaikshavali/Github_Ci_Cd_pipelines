@@ -1,0 +1,17 @@
+name: Salesforce CI/CD
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  salesforce-deployment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display Message
+        run: echo "GitHub Actions Pipeline Started Successfully"
