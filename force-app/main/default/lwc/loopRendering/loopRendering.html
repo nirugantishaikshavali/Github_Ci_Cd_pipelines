@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Loop Rendering">
+
+    <div class="slds-var-p-around_small">
+        <template for:each={carList} for:item="caritem">
+            <p key={caritem}>{caritem}</p>
+        </template>
+    </div>
+      
+    </lightning-card>
+
+    <lightning-card title="Loop Rendering for Objects">
+        <template for:each={usersList} for:item="userItem">
+            <div key={userItem.id}>
+                <p >Name-{userItem.name},Age-{userItem.age}</p>
+            </div>
+        </template>     
+    </lightning-card>
+
+
+    <lightning-card title="Load Complex Object - Iterator">
+       <template iterator:it={usersList}>
+        <div key={it.value.id}>
+            <div lwc:if={it.first} class="list-first"></div>
+            <p>{it.value.name},{it.value.age}</p>
+            <div lwc:if={it.last} class="list-last"></div>
+        </div>
+       </template>  
+    </lightning-card>
+
+    
+    
+</template>

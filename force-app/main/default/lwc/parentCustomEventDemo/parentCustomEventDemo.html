@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Custom Event Demo">
+
+        <template lwc:if={displayMessage}>
+            <p>Welcome to Learn LWC,From Tech Journey with Shaiksha</p>
+        </template>
+
+        <c-child-custom-event-demo ondisplaymsg={handleChange} 
+        ></c-child-custom-event-demo>
+      
+    </lightning-card>
+    
+</template>

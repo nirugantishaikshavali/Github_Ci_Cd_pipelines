@@ -1,0 +1,40 @@
+<template>
+    <lightning-record-edit-form
+      density="auto"
+      object-api-name={objectApiName}
+      record-id={recordId}
+      onsuccess={successHandler}
+      onerror={errorHandler}
+    >
+    <lightning-messages></lightning-messages>
+
+
+    <div class="slds-var-p-around_small">
+        <lightning-input-field 
+          field-name={fields.name}   
+          variant="standard"
+        ></lightning-input-field>
+
+         <lightning-input-field 
+          field-name={fields.industry}   
+          variant="standard"
+        ></lightning-input-field>
+        
+         <lightning-input-field 
+          field-name={fields.createdDate}   
+          variant="standard"
+        ></lightning-input-field>
+
+    </div>
+    <div class="slds-var-p-around_small">
+        <lightning-button 
+          type="submit"
+          variant="brand"
+          label="Create Account"
+        ></lightning-button>
+
+    </div>
+      
+    </lightning-record-edit-form>
+    
+</template>

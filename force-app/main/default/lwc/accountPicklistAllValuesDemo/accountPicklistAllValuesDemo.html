@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="All Account Picklists">
+
+        <template if:true={picklists}>
+            <template for:each={picklists} for:item="pick">
+
+                
+
+                <lightning-combobox
+    key={pick.fieldName}
+    name={pick.fieldName}
+    label={pick.label}
+    options={pick.options}
+    value={pick.value}
+    onchange={handleChange}>
+</lightning-combobox>
+
+            </template>
+        </template>
+
+        <br/>
+
+        <p><b>Selected Values:</b></p>
+        <template for:each={picklists} for:item="pick">
+            <p key={pick.fieldName}>
+    {pick.fieldName}: {pick.value}
+            </p>
+        </template>
+
+    </lightning-card>
+</template>

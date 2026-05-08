@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Navigation Button">
+        <lightning-button 
+          variant="brand"
+          label="Navigate Home Page" 
+          onclick={handleHomePage} 
+        ></lightning-button>
+      
+        <lightning-button 
+          variant="brand"
+          label="Navigate Account List View" 
+          onclick={handleAccountList} 
+        ></lightning-button>
+
+         <lightning-button 
+          variant="brand"
+          label="Navigate New Account (NoDefault)" 
+          onclick={handleAccountNoDefault} 
+        ></lightning-button>
+
+         <lightning-button 
+          variant="brand"
+          label="Navigate New Account (Default)" 
+          onclick={handleAccountDefault} 
+        ></lightning-button>
+
+         <lightning-button 
+          variant="brand"
+          label="Navigate to Edit Record Page" 
+          onclick={handleAccountEditPage} 
+        ></lightning-button>
+    </lightning-card>
+</template>

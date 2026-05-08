@@ -1,0 +1,24 @@
+<template>
+    <lightning-card icon-name="standard:account" variant="base">
+      <lightning-record-view-form
+        object-api-name={objectApiName}
+        record-id={recordId}
+      >
+
+      <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <lightning-output-field field-name={fieldObject.Name}> </lightning-output-field>
+            <lightning-output-field field-name={fieldObject.Industry}> </lightning-output-field>
+
+        </div>
+        <div class="slds-col">
+                        <lightning-output-field field-name={fieldObject.Name}> </lightning-output-field>
+            <lightning-output-field field-name={fieldObject.Rating}> </lightning-output-field>
+        </div>
+        <div class="slds-col"><span>3</span></div>
+        <div class="slds-col"><span>4</span></div>
+    </div>
+        
+      </lightning-record-view-form>
+    </lightning-card>
+</template>

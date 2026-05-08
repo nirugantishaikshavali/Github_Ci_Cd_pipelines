@@ -1,0 +1,7 @@
+<template>
+    <lightning-card title="Get Records">
+        <template for:each={records} for:item="rec">
+            <p key={rec.id}>{rec.name}</p>
+        </template>
+    </lightning-card>
+</template>

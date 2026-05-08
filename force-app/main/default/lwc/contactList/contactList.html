@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Contact Details" >
+        <lightning-layout>
+            <lightning-layout-item>
+                <template lwc:if={contacts.data}>
+                    <template for:each={contacts.data} for:item="contact">
+                        <c-contact-item contact={contact} key={contact.Id} onselection={selectionHandler}>
+
+                        </c-contact-item>
+                    </template>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item>
+                <template lwc:if={selectedContact}>
+                    <img src={selectedContact.PhotoUrl} />
+                    <p>{selectedContact.Name}</p>
+                    <p>{selectedContact.Title}</p>
+
+                </template>
+            </lightning-layout-item>          
+        </lightning-layout>
+      
+    </lightning-card>
+</template>

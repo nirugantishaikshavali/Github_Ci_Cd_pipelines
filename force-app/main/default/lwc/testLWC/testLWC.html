@@ -1,0 +1,18 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+
+        <lightning-input type="text" variant="standard" 
+        name="name" label="Enter Your Name" 
+        placeholder="type here..."
+        value={yourName}
+        onchange={nameChangeHandler}
+        ></lightning-input>
+         
+        <lightning-button variant="base" label="Click Me"
+         title="Click Me" onclick={handleClick}></lightning-button>
+
+        <p class="slds-p-horizontal_small">Card Body Narrow (custom component)</p>
+        <p slot="footer">Card Footer</p>
+    </lightning-card>
+
+</template>

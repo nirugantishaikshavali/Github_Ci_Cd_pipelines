@@ -1,0 +1,32 @@
+<template>
+
+    <lightning-card title="Read Account" class="slds-var-p-around_small">
+      <lightning-record-form
+      columns="2"
+      object-api-name={objectApiName}
+      fields={fields}
+      onsuccess={naviageToRecordPage}
+    ></lightning-record-form>
+    </lightning-card>
+
+    <lightning-card title="View  Account" class="slds-var-p-around_small">
+      <lightning-record-form
+      columns="2"
+      object-api-name={objectApiName}
+      record-id={recordId}
+      fields={fields}
+      mode="view"
+    ></lightning-record-form>
+    </lightning-card>
+
+    <lightning-card title="Edit  Account" class="slds-var-p-around_small">
+      <lightning-record-form
+      columns="2"
+      object-api-name={objectApiName}
+      record-id={recordId}
+      fields={fields}
+      mode="edit"
+    ></lightning-record-form>
+    </lightning-card>
+    
+</template>

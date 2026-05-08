@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Child to Parent">
+        <template lwc:if={display_txt}>
+        <div>
+            <p>{welcome_msg}</p>
+        </div>
+        </template>
+       
+        <div>
+
+        <c-child-parent3  ondisplaymessage={handleDisplay}></c-child-parent3>
+        </div>
+      
+    </lightning-card>
+</template>

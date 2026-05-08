@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Concatenate Names">
+        <lightning-input label="First Name" name="firstname" onchange={handleChange} value={firstName}></lightning-input>
+
+        <lightning-input label="Last Name" name="lastname" onchange={handleChange} value={lastName}></lightning-input>
+
+        <lightning-button label="Combine" variant="brand" onclick={handleClick}></lightning-button>
+
+        <p>Full Name: {fullName}</p>
+    </lightning-card>
+</template>

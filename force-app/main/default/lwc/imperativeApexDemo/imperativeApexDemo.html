@@ -1,0 +1,37 @@
+<template>
+<div class="slds-grid slds-wrap slds-var-p-around_small">
+                <div class="slds-col slds-size_7-of-12">
+                    <template lwc:if={industryPickList.data}>
+                    <lightning-combobox
+                            name="progress"
+                            label="Industry"
+                            placeholder="Select Industry"
+                            options={industryPickList.data.values}
+                            onchange={handleChange} >
+                        </lightning-combobox>
+                        </template>
+                </div>
+                <div class="slds-col slds-size_5-of-12 slds-var-p-around_small">
+                        <div class="slds-var-p-around_small">
+
+                                <lightning-button 
+                                label="Load Account Records" 
+                                onclick={handleClick} 
+                                ></lightning-button>
+                        </div>
+                    </div>
+    </div>
+
+    
+
+
+<div class="slds-var-p-around_small">
+<template lwc:if={data.length}>
+    <lightning-datatable
+        key-field="Id"
+        data={data}
+        columns={columns}>
+    </lightning-datatable>
+</template>
+</div>
+</template>

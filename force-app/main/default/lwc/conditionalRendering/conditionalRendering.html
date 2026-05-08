@@ -1,0 +1,10 @@
+<template>
+    <lightning-input type="checkbox" onchange={changeHandler}>Display Message </lightning-input>
+    <template lwc:if={showContent}>
+        <p><lightning-formatted-text value="Welcome to Salesforce World" ></lightning-formatted-text></p>
+    </template >
+    <template lwc:else>
+        <p><lightning-formatted-text value="Your not authorized to see this message" ></lightning-formatted-text></p>
+
+    </template>
+</template>

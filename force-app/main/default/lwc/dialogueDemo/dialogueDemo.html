@@ -1,0 +1,26 @@
+<template>
+    <div>
+        <lightning-button 
+                    aria-haspopup="dialog"
+
+          label="Alert Me" 
+          onclick={handleAlertModal} 
+        ></lightning-button>
+
+         <lightning-button 
+                     aria-haspopup="dialog"
+
+          label="Confirm Me" 
+          onclick={handleConfirmModal} 
+        ></lightning-button>
+
+          <div class="example">
+        <lightning-button
+            aria-haspopup="dialog"
+            onclick={handlePromptModal}
+            label="Open the Prompt Modal"
+        ></lightning-button>
+    </div>
+    </div>
+    
+</template>

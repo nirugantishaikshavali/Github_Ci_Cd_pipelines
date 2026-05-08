@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Subscriber LMS Opportunity">
+
+        <template if:true={selectedData}>
+            <div class="divelement">
+                <p>{selectedData.Name}</p>
+                <p>{selectedData.Type}</p>
+                <p>{selectedData.StageName}</p>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

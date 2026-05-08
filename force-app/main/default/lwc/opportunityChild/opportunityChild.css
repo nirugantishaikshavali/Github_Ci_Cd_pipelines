@@ -1,0 +1,11 @@
+.divelement {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 8px;
+    cursor: pointer;              /* 🔥 makes it clickable */
+    transition: background 0.2s;
+}
+
+.divelement:hover {
+    background-color: #f3f3f3;    /* hover effect */
+}

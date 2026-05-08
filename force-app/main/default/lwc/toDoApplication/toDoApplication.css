@@ -1,0 +1,17 @@
+.rect-btn button {
+    border-radius: 4px !important; /* reduce roundness */
+    padding: 6px 16px;
+}
+
+
+.incompletebg{
+    background-color: #faf59b;
+}
+
+.completebg{
+    background-color: #aafac3;
+}
+
+.formattaskname{
+    font-size: large;
+}

@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Opportunity Data">
+        <p>This example creates a simple layout with field headers.</p>
+    <div class="c-container">
+        <lightning-layout  horizontal-align="center">
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+                    <c-opportunity-child opportunities={opportunities} onselect={selectedOpportunity}></c-opportunity-child>               
+                </div>
+            </lightning-layout-item>
+
+            <lightning-layout-item padding="around-small">
+                <div class="header-column">
+                    <template if:true={selectedData}>
+
+                        <div >
+                                    <p>{selectedData.Name}</p>
+                                    <p>{selectedData.Type}</p>
+                                    <p>{selectedData.StageName}</p>
+                        </div>
+                    </template>
+                </div>
+                
+            </lightning-layout-item>
+            
+            
+
+
+        </lightning-layout>
+    </div>
+      
+    </lightning-card>
+</template>

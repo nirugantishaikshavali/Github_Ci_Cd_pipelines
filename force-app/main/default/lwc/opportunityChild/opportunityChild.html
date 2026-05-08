@@ -1,0 +1,13 @@
+<template>
+    <a href=""></a>
+    <template lwc:if={opportunities}>
+        <template for:each={opportunities} for:item="opp" >
+            <div key={opp.Id} class="divelement" data-id={opp.Id} onclick={handleclick}>
+                <p>{opp.Name}</p>
+                <p>{opp.Type}</p>
+                <p>{opp.StageName}</p>
+            </div>
+        </template>
+    </template>
+    
+</template>

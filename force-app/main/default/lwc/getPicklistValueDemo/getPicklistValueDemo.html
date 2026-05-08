@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Picklist Demo">
+        <template if:true={leadSource}>
+            <lightning-combobox
+                name="Lead Source"
+                label="Lead Source"
+                value={selectedValue}
+                placeholder="Select Lead Source"
+                options={leadSource}
+                onchange={handleChange}>
+            </lightning-combobox>
+        </template>
+
+        <p>Selected value is: {selectedValue}</p>
+    </lightning-card>
+</template>

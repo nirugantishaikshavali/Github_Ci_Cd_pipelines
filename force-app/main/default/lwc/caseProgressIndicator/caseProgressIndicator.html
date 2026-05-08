@@ -1,0 +1,20 @@
+<template>
+    <template if:true={statusOptions}>
+        <template if:true={caseStatusValue}>
+            <lightning-progress-indicator 
+                current-step={caseStatusValue} 
+                type="path" 
+                variant="base">
+
+                <template for:each={statusOptions} for:item="step">
+                    <lightning-progress-step 
+                        key={step.value}
+                        label={step.label} 
+                        value={step.value}>
+                    </lightning-progress-step>
+                </template>
+
+            </lightning-progress-indicator>
+        </template>
+    </template>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Tech Journey">
+        <p class="slds-var-p-around_small">{greeting}</p>
+        <p class="slds-p-left_small">{welcome}</p>
+        <p>{list_data.name}</p>
+
+        <lightning-button 
+          variant="brand"
+          label="Show Data" 
+          onclick={changeHandler} 
+          utility:arrowdown
+        ></lightning-button>
+      
+    </lightning-card>
+</template>

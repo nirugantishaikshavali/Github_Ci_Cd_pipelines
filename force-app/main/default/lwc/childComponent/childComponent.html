@@ -1,0 +1,15 @@
+<template>
+    <div>
+        <p><lightning-formatted-text value={name} ></lightning-formatted-text></p>
+        <p><lightning-formatted-text value={upperName} ></lightning-formatted-text></p>
+        <p><lightning-formatted-text value={name} ></lightning-formatted-text></p>
+
+        <template lwc:if={isDataPrinted}>
+        <p><lightning-formatted-text value="Yes it is true to read the data" >
+        </lightning-formatted-text></p>
+
+        </template>
+        <p><lightning-formatted-text value={displayGreeting} ></lightning-formatted-text></p>
+
+    </div>    
+</template>

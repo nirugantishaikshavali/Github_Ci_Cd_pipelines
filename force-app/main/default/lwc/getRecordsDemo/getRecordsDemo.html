@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Get Records Demo">
+        <template lwc:if={output}>
+            <template for:each={output} for:item="name">
+                <p key={name}>{name}</p>
+            </template>
+        </template>
+    </lightning-card>
+</template>

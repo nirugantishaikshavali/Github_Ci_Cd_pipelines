@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Get Object Info">
+        <template lwc:if={accountRelationship}>
+            <template for:each={accountRelationship} for:item="accRel">
+                <div key={accRel}>
+                    {accRel}
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>
