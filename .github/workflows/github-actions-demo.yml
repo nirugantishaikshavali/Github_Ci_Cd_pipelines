@@ -19,7 +19,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: 18
 
       # Install Salesforce CLI
       - name: Install Salesforce CLI
@@ -28,22 +28,28 @@ jobs:
 
       # Verify Salesforce CLI
       - name: Verify Salesforce CLI
-        run: sf --version
+        run: |
+          sf --version
 
       # Decrypt JWT Key
       - name: Decrypt JWT Key
         run: |
           openssl enc -nosalt -aes-256-cbc -d \
-          -in keys/server.key.enc \
-          -base64 \
-          -K ${{ secrets.ENCRYPTION_KEY }} \
-          -iv ${{ secrets.ENCRYPTION_IV }} \
-          -out keys/server.key
+            -in keys/server.key.enc \
+            -base64 \
+            -K ${{ secrets.ENCRYPTION_KEY }} \
+            -iv ${{ secrets.ENCRYPTION_IV }} \
+            -out keys/server.key
 
       # Authenticate Salesforce Org
       - name: Authenticate Salesforce Org
         run: |
-          sf org login jwt --client-id "${{ secrets.CONSUMER_KEY }}" --jwt-key-file keys/server.key --username "${{ secrets.SF_USERNAME }}" --instance-url "${{ secrets.SF_INSTANCE_URL }}" --alias "${{ secrets.SF_ALIAS }}"
+          sf org login jwt \
+            --client-id "${{ secrets.CONSUMER_KEY }}" \
+            --jwt-key-file keys/server.key \
+            --username "${{ secrets.SF_USERNAME }}" \
+            --instance-url "https://login.salesforce.com" \
+            --alias "devorg"
 
       # Display Connected Orgs
       - name: Display Org List
