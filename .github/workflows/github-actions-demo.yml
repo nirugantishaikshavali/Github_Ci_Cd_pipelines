@@ -1,4 +1,4 @@
-name: Salesforce CI/CD
+name: Salesforce CI/CD Pipeline
 
 on:
   push:
@@ -6,12 +6,56 @@ on:
       - dev
 
 jobs:
-  salesforce-deployment:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
+
+      # Checkout GitHub Repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Display Message
-        run: echo "GitHub Actions Pipeline Started Successfully"
+      # Install Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Install Salesforce CLI
+      - name: Install Salesforce CLI
+        run: |
+          npm install --global @salesforce/cli
+
+      # Verify Salesforce CLI
+      - name: Verify Salesforce CLI
+        run: sf --version
+
+      # Decrypt JWT Key
+      - name: Decrypt JWT Key
+        run: |
+          openssl enc -nosalt -aes-256-cbc -d \
+          -in keys/server.key.enc \
+          -base64 \
+          -K ${{ secrets.ENCRYPTION_KEY }} \
+          -iv ${{ secrets.ENCRYPTION_IV }} \
+          -out keys/server.key
+
+      # Authenticate with Salesforce using JWT
+      - name: Authenticate Salesforce Org
+        run: |
+          sf org login jwt \
+          --client-id ${{ secrets.CONSUMER_KEY }} \
+          --jwt-key-file keys/server.key \
+          --username ${{ secrets.SF_USERNAME }} \
+          --instance-url ${{ secrets.SF_INSTANCE_URL }} \
+          --alias ${{ secrets.SF_ALIAS }}
+
+      # Verify Connected Org
+      - name: Display Org List
+        run: sf org list
+
+      # Deploy Salesforce Metadata
+      - name: Deploy Metadata
+        run: |
+          sf project deploy start \
+          --source-dir force-app
