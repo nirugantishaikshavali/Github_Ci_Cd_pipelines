@@ -23,40 +23,25 @@ jobs:
 
       # Install Salesforce CLI
       - name: Install Salesforce CLI
-        run: |
-          npm install --global @salesforce/cli
+        run: npm install --global @salesforce/cli
 
       # Verify Salesforce CLI
       - name: Verify Salesforce CLI
-        run: |
-          sf --version
+        run: sf --version
 
       # Decrypt JWT Key
       - name: Decrypt JWT Key
         run: |
-          openssl enc -nosalt -aes-256-cbc -d \
-            -in keys/server.key.enc \
-            -base64 \
-            -K ${{ secrets.ENCRYPTION_KEY }} \
-            -iv ${{ secrets.ENCRYPTION_IV }} \
-            -out keys/server.key
+          openssl enc -nosalt -aes-256-cbc -d -in keys/server.key.enc -base64 -K ${{ secrets.ENCRYPTION_KEY }} -iv ${{ secrets.ENCRYPTION_IV }} -out keys/server.key
 
       # Authenticate Salesforce Org
       - name: Authenticate Salesforce Org
-        run: |
-          sf org login jwt \
-            --client-id "${{ secrets.CONSUMER_KEY }}" \
-            --jwt-key-file keys/server.key \
-            --username "${{ secrets.SF_USERNAME }}" \
-            --instance-url "https://login.salesforce.com" \
-            --alias "devorg"
+        run: sf org login jwt --client-id "${{ secrets.CONSUMER_KEY }}" --jwt-key-file keys/server.key --username "${{ secrets.SF_USERNAME }}" --instance-url https://login.salesforce.com --alias devorg
 
       # Display Connected Orgs
       - name: Display Org List
-        run: |
-          sf org list
+        run: sf org list
 
       # Deploy Salesforce Metadata
       - name: Deploy Metadata
-        run: |
-          sf project deploy start --source-dir force-app
+        run: sf project deploy start --source-dir force-app
