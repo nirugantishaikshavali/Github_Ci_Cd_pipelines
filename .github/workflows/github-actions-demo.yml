@@ -55,14 +55,14 @@ jobs:
         shell: bash
         run: |
           sf org login jwt \
-          --client-id "$SF_CLIENT_ID" \
+          --client-id=$SF_CLIENT_ID \
           --jwt-key-file keys/server.key \
-          --username "$SF_USERNAME" \
+          --username=$SF_USERNAME \
           --instance-url https://login.salesforce.com \
           --alias devorg
 
       # Display Org List
-      - name: Display Org's List
+      - name: Display Org List
         shell: bash
         run: |
           sf org list
