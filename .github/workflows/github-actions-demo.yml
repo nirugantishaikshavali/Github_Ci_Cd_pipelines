@@ -21,7 +21,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Install Node.js
+      # Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -31,13 +31,13 @@ jobs:
       - name: Install Salesforce CLI
         shell: bash
         run: |
-          npm install --global @salesforce/cli
+          npm install sfdx-cli --global
 
-      # Verify CLI
+      # Verify Salesforce CLI
       - name: Verify Salesforce CLI
         shell: bash
         run: |
-          sf version
+          sfdx --version
 
       # Decrypt JWT Key
       - name: Decrypt JWT Key
@@ -45,30 +45,31 @@ jobs:
         run: |
           openssl enc -nosalt -aes-256-cbc -d \
           -in keys/server.key.enc \
+          -out keys/server.key \
           -base64 \
-          -K "$SF_ENCRYPTION_KEY" \
-          -iv "$SF_ENCRYPTION_IV" \
-          -out keys/server.key
+          -K $SF_ENCRYPTION_KEY \
+          -iv $SF_ENCRYPTION_IV
 
       # Authenticate Salesforce Org
       - name: Authenticate Salesforce Org
         shell: bash
         run: |
-          sf org login jwt \
-          --client-id=$SF_CLIENT_ID \
-          --jwt-key-file keys/server.key \
-          --username=$SF_USERNAME \
-          --instance-url https://login.salesforce.com \
-          --alias devorg
+          sfdx force:auth:jwt:grant \
+          --clientid $SF_CLIENT_ID \
+          --jwtkeyfile keys/server.key \
+          --username $SF_USERNAME \
+          --instanceurl https://login.salesforce.com \
+          --setdefaultusername \
+          --setalias devorg
 
-      # Display Org List
+      # Display Connected Orgs
       - name: Display Org List
         shell: bash
         run: |
-          sf org list
+          sfdx force:org:list
 
       # Deploy Metadata
       - name: Deploy Metadata
         shell: bash
         run: |
-          sf project deploy start --source-dir force-app
+          sfdx force:source:deploy -p force-app -u devorg
