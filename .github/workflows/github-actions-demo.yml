@@ -62,7 +62,7 @@ jobs:
           --alias devorg
 
       # Display Org List
-      - name: Display Org List
+      - name: Display Org's List
         shell: bash
         run: |
           sf org list
